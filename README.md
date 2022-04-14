@@ -1,5 +1,21 @@
 # Modern C++ exercises
 
+## Results
+
+> Task 7: Mark `getX()` in `Rectangle` as `final`. What is the problem?
+`getX()` must be virtual to be marked as final
+
+> Task 8:
+Without constexpr: 13.667s
+With constexpr: 0.013s
+
+> Task 10: Change lambda `areaLessThan10` into lambda `areaLessThanX`, which takes `x = 10` on a capture list. What is the problem?
+Lambdas can not be converted to function pointers when the use captures. Changed `findFirstShapeMatchingPredicate` argument type
+to `std::function<bool(shared_ptr<Shape)>`.
+
+> Homework 3: What about Rule of 5?
+Rule of 0 is preferred.
+
 ## Compilation and running the project
 
 Check your g++ version by typing:

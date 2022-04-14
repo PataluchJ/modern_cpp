@@ -4,19 +4,23 @@
 
 class Rectangle : public Shape
 {
+    using Shape::Shape;
 public:
+    Rectangle() = delete;
     Rectangle(double x, double y);
-    Rectangle(const Rectangle & other);
+    Rectangle(const Rectangle & other) = default;
+    Rectangle(Rectangle&& other) noexcept = default;
+    Rectangle& operator=(Rectangle&) = default;
+    Rectangle& operator=(Rectangle&&) noexcept = default;
 
-    double getArea() const;
-    double getPerimeter() const;
-    double getX() const;
-    double getY() const;
-    void print() const;
+    virtual double getArea() const noexcept override;
+    virtual double getPerimeter() const noexcept override;
+    virtual void print() const override;
+    
+    virtual double getX() const noexcept final ;
+    virtual double getY() const noexcept;
 
 private:
-    Rectangle();
-
-    double x_;
-    double y_;
+    double x_ = 0.0;
+    double y_ = 0.0;
 };
